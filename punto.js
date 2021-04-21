@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.Punto = void 0;
+exports.Triangulo = exports.Punto = void 0;
 var Punto = /** @class */ (function () {
     function Punto(x, y) {
         this.x = x;
@@ -51,7 +51,6 @@ var Punto = /** @class */ (function () {
         return resultado;
     };
     Punto.prototype.calcularMasCercano = function (puntos) {
-        var puntoCerca;
         var numDistancia = new Array();
         for (var i = 0; i < puntos.length; i++) {
             numDistancia[i] = Math.sqrt((Math.pow((puntos[i].x + this.x), 2)) + (Math.pow((puntos[i].y + this.y), 2)));
@@ -61,8 +60,19 @@ var Punto = /** @class */ (function () {
     return Punto;
 }());
 exports.Punto = Punto;
-var punto1 = new Punto(22, 0);
-var punto2 = new Punto(2, 34);
-var punto3 = new Punto(32, 22);
-var puntoArr = [punto2, punto3];
-console.log(punto1.calcularMasCercano(puntoArr));
+var Triangulo = /** @class */ (function () {
+    function Triangulo(vertice1, vertice2, vertice3) {
+        this.vertice1 = vertice1;
+        this.vertice2 = vertice2;
+        this.vertice3 = vertice3;
+    }
+    Triangulo.prototype.calcularLongitudLados = function () {
+        var distanciaLados = new Array();
+        distanciaLados[0] = Math.sqrt((Math.pow((this.vertice1.getX() + this.vertice2.getX()), 2)) + (Math.pow((this.vertice1.getY() + this.vertice2.getY()), 2)));
+        distanciaLados[1] = Math.sqrt((Math.pow((this.vertice2.getX() + this.vertice3.getX()), 2)) + (Math.pow((this.vertice2.getY() + this.vertice3.getY()), 2)));
+        distanciaLados[2] = Math.sqrt((Math.pow((this.vertice3.getX() + this.vertice1.getX()), 2)) + (Math.pow((this.vertice3.getY() + this.vertice1.getY()), 2)));
+        return distanciaLados;
+    };
+    return Triangulo;
+}());
+exports.Triangulo = Triangulo;

@@ -56,3 +56,23 @@ export class Punto{
     }
 }
 
+export class Triangulo {
+    private vertice1 : Punto
+    private vertice2 : Punto
+    private vertice3 : Punto
+
+    constructor(vertice1:Punto,vertice2:Punto,vertice3:Punto,){
+        this.vertice1 = vertice1
+        this.vertice2 = vertice2
+        this.vertice3 = vertice3
+    }
+
+    calcularLongitudLados(){
+        let distanciaLados : number[] = new Array()
+        
+        distanciaLados[0] = Math.sqrt(((this.vertice1.getX() + this.vertice2.getX())** 2) + ((this.vertice1.getY() + this.vertice2.getY())** 2))
+        distanciaLados[1] = Math.sqrt(((this.vertice2.getX() + this.vertice3.getX())** 2) + ((this.vertice2.getY() + this.vertice3.getY())** 2))
+        distanciaLados[2] = Math.sqrt(((this.vertice3.getX() + this.vertice1.getX())** 2) + ((this.vertice3.getY() + this.vertice1.getY())** 2))
+        return distanciaLados
+    }
+}
